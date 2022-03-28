@@ -8,9 +8,6 @@ function Search() {
     
         const [heroes, setHeroes] = useState([]);
         const [alias, setAlias] = useState('')
-        const [list, setList] = useState(true);
-        const [card, setCard] = useState(false);
-        const [change, setChange] = useState('');
     
         useEffect(() => {
             // componentDidMount
@@ -22,13 +19,12 @@ function Search() {
                 });
         }, []);
 
-        let showCard = (heroName) => {
+        let showCard = (alias) => {
             fetch(`http://localhost:8001/heroes/${alias}`)
               .then((res) => res.json())
               .then((res) => {
                 setHeroes(res.data);
-                setList(false);
-                setCard(true);
+                console.log(heroes)
               });
           };
 
@@ -36,23 +32,17 @@ function Search() {
             setAlias(e.target.value);
           };
 
-          let showList = () => {
-            setCard(false);
-            setList(true);
-          };
-
   return (
     <> 
-        <h1 className="text-3xl font-bold underline p-10">Heroes API</h1>
+        <h1 className="text-3xl font-bold underline p-10">Search a hero :</h1>
 
         <div >
-            <label className='space-x-4 mx-10 p-5'>Search a hero :</label>
             
-            <input type='text'className='space-x-3 rounded-xl form-input shadow-lg border-4'   onClick={() => showCard(heroes._id)}
+            <input type='text'className='space-x-3 rounded-xl form-input shadow-lg border-4 p-15'
              onChange={handleChange} placeholder ='Venom'
              />
             
-            <button className="bg-red-500 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-full shadow-lg border-4 mx-3">
+            <button className="bg-red-500 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-full shadow-lg border-4 mx-3" onClick={showCard}>
             Search
             </button>
 
@@ -72,9 +62,6 @@ function Search() {
 
                 <p>age : {heroes.age}</p>
 
-                <div onClick={() => showList()} class="btn btn-primary">
-                    Back
-                </div>
 
             </div>
             <div class="px-6 pt-4 pb-2">
