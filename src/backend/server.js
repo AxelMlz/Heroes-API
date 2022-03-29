@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const Heroes = require("./models/heroesModel")
 const cors = require("cors");
 app.use(cors());
+require('dotenv').config()
 
 // let heroes = 
 // [
@@ -45,7 +46,7 @@ app.use(cors());
 
 mongoose
 	.connect(
-		"mongodb+srv://axel_mlz:pMAywTH8XDi7JUf@database-backend.4wob9.mongodb.net/database-backend?retryWrites=true&w=majority",
+		"mongodb+srv://axel_mlz:{process.DBPASSWORD}@database-backend.4wob9.mongodb.net/database-backend?retryWrites=true&w=majority",
 		{
 			useNewUrlParser: true,
 		}
