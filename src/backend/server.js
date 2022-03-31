@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
-const port = 8001;
+const port = 8002;
 app.use(express.json());
 const mongoose = require("mongoose");
 const Heroes = require("./models/heroesModel")
 const cors = require("cors");
 app.use(cors());
-require('dotenv').config()
-
+require('dotenv').config("../../.env")
+console.log(process.env)
 // let heroes = 
 // [
     // {
@@ -46,7 +46,7 @@ require('dotenv').config()
 
 mongoose
 	.connect(
-		"mongodb+srv://axel_mlz:{process.DBPASSWORD}@database-backend.4wob9.mongodb.net/database-backend?retryWrites=true&w=majority",
+		process.env.MONGO_URI,
 		{
 			useNewUrlParser: true,
 		}
