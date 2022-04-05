@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
-const port = 8002;
+var port = process.env.PORT || 8000;
 app.use(express.json());
+require('dotenv').config({ path: "../../.env"})
 const mongoose = require("mongoose");
 const Heroes = require("./models/heroesModel")
 const cors = require("cors");
 app.use(cors());
-require('dotenv').config("../../.env")
-console.log(process.env)
+console.log(process.env.MONGO_URI)
 // let heroes = 
 // [
     // {

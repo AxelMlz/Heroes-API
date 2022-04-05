@@ -1,4 +1,5 @@
 import React, { Component,  useEffect, useState } from 'react';
+import { toast } from "react-toastify";
 import ReactDOM from 'react-dom';
 import '../index.css';
 
@@ -7,31 +8,37 @@ import '../index.css';
 function Search() {
     
         const [heroes, setHeroes] = useState([]);
+        const [selectheroes, setSelectHeroes] = useState({});
         const [alias, setAlias] = useState('')
-    
-        useEffect(() => {
-            // componentDidMount
-            fetch("http://localhost:8001/heroes")
-                .then((res) => res.json())
-                .then((res) => {
-                    console.log(res);
-                    setHeroes(res);
-                });
-        }, []);
+      
 
-        let showCard = (alias) => {
-            fetch(`http://localhost:8001/heroes/${alias}`)
+        // function showCard(alias)  {
+        //     fetch(`http://localhost:8002/heroes/${alias}`)
+        //       .then((res) => res.json())
+        //       .then((res) => {
+        //         setSelectHeroes(res.data);
+        //         console.log(selectheroes)
+        //       });
+        //   };
+
+          const handleSubmit = (e) => {
+            e.preventDefault();
+            if (alias) {
+              console.log("fetch")
+            fetch(`/heroes/${alias}`)
               .then((res) => res.json())
               .then((res) => {
-                setHeroes(res.data);
-                console.log(heroes)
+                console.log(res)
+                setSelectHeroes(res.data);
+                
               });
+              } else {
+          toast.error("Please input a hero's name");
+        
+              
+              }
           };
-
-          function handleChange(e) {
-            setAlias(e.target.value);
-          };
-
+console.log(selectheroes)
   return (
     <> 
         <h1 className="text-3xl font-bold underline p-10">Search a hero :</h1>
@@ -39,16 +46,19 @@ function Search() {
         <div >
             
             <input type='text'className='space-x-3 rounded-xl form-input shadow-lg border-4 p-15'
-             onChange={handleChange} placeholder ='Venom'
+            //  onChange={handleChange}
+              placeholder ='Venom'
+             value={alias}
+						onChange={(e) => setAlias(e.target.value)}
              />
             
-            <button className="bg-red-500 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-full shadow-lg border-4 mx-3" onClick={showCard}>
+            <button className="bg-red-500 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-full shadow-lg border-4 mx-3" onClick={handleSubmit}>
             Search
             </button>
 
         </div>
         
-       (
+       
        <div class="max-w-sm rounded overflow-hidden shadow-lg p-15">
             <div class="px-6 py-4">
 
