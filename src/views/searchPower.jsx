@@ -10,16 +10,6 @@ function Search() {
         const [heroes, setHeroes] = useState([]);
         const [selectHeroes, setSelectHeroes] = useState(null);
         const [alias, setAlias] = useState('')
-      
-
-        // function showCard(alias)  {
-        //     fetch(`http://localhost:8002/heroes/${alias}`)
-        //       .then((res) => res.json())
-        //       .then((res) => {
-        //         setSelectHeroes(res.data);
-        //         console.log(selectheroes)
-        //       });
-        //   };
 
           const handleSubmit = (e) => {
             e.preventDefault();
@@ -34,11 +24,9 @@ function Search() {
               });
               } else {
           toast.error("Please input a hero's name");
-        
-              
               }
           };
-console.log(selectHeroes)
+
   return (
     <> 
         <h1 className="text-3xl font-bold underline p-10">Search a hero :</h1>

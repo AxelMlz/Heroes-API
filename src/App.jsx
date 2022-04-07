@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Header from './components/header.jsx';
+import subNavbar from './components/subNavbar.jsx';
 import Body from './components/body.jsx';
 import Footer from './components/footer.jsx';
 import List from './views/list.jsx';
@@ -18,10 +19,18 @@ function App() {
     <BrowserRouter> 
         <> 
         <Header></Header>
+        <subNavbar>
+          <Route></Route>
+        </subNavbar>
           <Routes> 
                 <Route path='/heroes' element={<Homepage/>}/>
                 <Route path='/heroes/search' element={<Search/>}/>
-                <Route path='/heroes/list' element={<List/>}/>
+                <Route path='/heroes/list' element={<List/>}
+                
+                />
+                <Routes>
+
+                </Routes>
           </Routes>
 
             
