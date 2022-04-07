@@ -8,6 +8,7 @@ const Heroes = require("./models/heroesModel")
 const cors = require("cors");
 app.use(cors());
 console.log(process.env.MONGO_URI)
+
 // let heroes = 
 // [
     // {
@@ -103,10 +104,12 @@ app.get ("/heroes", debug, transformName, async (req,res)=> {
  })
 
  // GET - get a Hero from the list
- app.get ("/heroes/:name", debug, transformName, async (req, res)=>{
-    try {
-		let heroes = await Heroes.findOne({heroName : req.params.name})
-		res.json(heroes)
+ app.get ("/heroes/:name", debug, async (req, res)=>{
+	 console.log("/heroes/:name")
+	 try {
+		 let heroes = await Heroes.findOne({heroName : req.params.name})
+		 console.log("Heroes", req.params.name, heroes)
+		 res.json(heroes)
 	} catch (err) {
 		console.log(err);
 
@@ -167,6 +170,7 @@ app.delete ("/heroes/:id", debug, async (req, res)=>{
 })
 
 // GET - Powers from the Name
+
 app.get ("/heroes/:name/powers", debug, async(req, res)=>{
 	console.log(req.params.name)
     try {

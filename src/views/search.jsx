@@ -8,7 +8,7 @@ import '../index.css';
 function Search() {
     
         const [heroes, setHeroes] = useState([]);
-        const [selectheroes, setSelectHeroes] = useState({});
+        const [selectHeroes, setSelectHeroes] = useState(null);
         const [alias, setAlias] = useState('')
       
 
@@ -29,7 +29,7 @@ function Search() {
               .then((res) => res.json())
               .then((res) => {
                 console.log(res)
-                setSelectHeroes(res.data);
+                setSelectHeroes(res);
                 
               });
               } else {
@@ -38,7 +38,7 @@ function Search() {
               
               }
           };
-console.log(selectheroes)
+console.log(selectHeroes)
   return (
     <> 
         <h1 className="text-3xl font-bold underline p-10">Search a hero :</h1>
@@ -58,19 +58,21 @@ console.log(selectheroes)
 
         </div>
         
-       
+       {selectHeroes && 
        <div class="max-w-sm rounded overflow-hidden shadow-lg p-15">
             <div class="px-6 py-4">
 
-                <div class="font-bold text-xl mb-2">{heroes.heroName}</div>
+                <div class="font-bold text-xl mb-2">{selectHeroes.heroName}</div>
 
                 <p class="text-gray-700 text-base"
                 // function heroes.power.map()
                 >
-                    Lorem ipsum dolor sit amet, xconsectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                   { selectHeroes.power.map((power) => (
+                      <p> {power} </p>
+                   ))}
                 </p>
 
-                <p>age : {heroes.age}</p>
+                <p>age : {selectHeroes.age}</p>
 
 
             </div>
@@ -81,8 +83,8 @@ console.log(selectheroes)
                 <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
            
             </div>
-        </div>
-      ) 
+        </div>}
+      
     
         
    </>
