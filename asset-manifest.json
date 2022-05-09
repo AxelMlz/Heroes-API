@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Heroes-API/static/css/main.40041730.css",
+    "main.js": "/Heroes-API/static/js/main.926e101f.js",
+    "static/js/787.6910b12d.chunk.js": "/Heroes-API/static/js/787.6910b12d.chunk.js",
+    "index.html": "/Heroes-API/index.html",
+    "main.40041730.css.map": "/Heroes-API/static/css/main.40041730.css.map",
+    "main.926e101f.js.map": "/Heroes-API/static/js/main.926e101f.js.map",
+    "787.6910b12d.chunk.js.map": "/Heroes-API/static/js/787.6910b12d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.40041730.css",
+    "static/js/main.926e101f.js"
+  ]
+}
