@@ -23,11 +23,11 @@ function App() {
           <Route></Route>
         </subNavbar>
           <Routes> 
-                <Route path='/heroes' element={<Homepage/>}/>
-                <Route path='/heroes/search' element={<Search/>}/>
-                <Route path='/heroes/list' element={<List/>}
+                < Route path='/heroes' element={<Homepage/>} />
+                {/* < Route path='/heroes/search' element={<Search/>} />
+                < Route path='/heroes/list' element={<List/>} /> */}
                 
-                />
+                
                 <Routes>
 
                 </Routes>

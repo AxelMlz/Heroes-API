@@ -2,12 +2,13 @@ const express = require('express');
 const app = express();
 var port = process.env.PORT || 8000;
 app.use(express.json());
-require('dotenv').config({ path: "../../.env"})
+require('dotenv').config({ path: "./config.env"})
 const mongoose = require("mongoose");
 const Heroes = require("./models/heroesModel")
 const cors = require("cors");
 app.use(cors());
 console.log(process.env.MONGO_URI)
+MONGO_URI = process.env.MONGO_URI
 
 // let heroes = 
 // [
@@ -47,7 +48,7 @@ console.log(process.env.MONGO_URI)
 
 mongoose
 	.connect(
-		process.env.MONGO_URI,
+		MONGO_URI,
 		{
 			useNewUrlParser: true,
 		}
