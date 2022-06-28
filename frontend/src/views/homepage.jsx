@@ -9,7 +9,7 @@ function Homepage() {
   
   return (
     <> 
-       <h1>Heroes API</h1>
+       <h1>Marv's Heroes API</h1>
    </>
   );
 }

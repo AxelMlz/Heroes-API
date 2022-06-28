@@ -5,7 +5,7 @@ import '../index.css';
 function Footer() {
   return (
    <div>
-
+    <>@Axel Mélézan 2022</>
    </div>
   );
 }
